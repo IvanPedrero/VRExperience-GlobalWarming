@@ -16,6 +16,8 @@ permissions and limitations under the License.
 
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 /// <summary>
 /// An object that can be grabbed and thrown by OVRGrabber.
@@ -36,6 +38,15 @@ public class OVRGrabbable : MonoBehaviour
     protected bool m_grabbedKinematic = false;
     protected Collider m_grabbedCollider = null;
     protected OVRGrabber m_grabbedBy = null;
+
+    public bool isTransitionObject;
+    public int sceneToTransition;
+    public TextMesh sceneText;
+    [TextArea(3,5)]
+    public string sceneMessage;
+
+    public bool snapBackToPlace;
+    private Transform initialPosition;
 
 	/// <summary>
 	/// If true, the object can currently be grabbed.
@@ -117,6 +128,16 @@ public class OVRGrabbable : MonoBehaviour
         m_grabbedBy = hand;
         m_grabbedCollider = grabPoint;
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
+
+        if (isTransitionObject)
+        {
+            SceneManager.LoadScene(sceneToTransition);
+        }
+
+        if (snapBackToPlace)
+        {
+            initialPosition = this.transform;
+        }
     }
 
 	/// <summary>
@@ -130,6 +151,12 @@ public class OVRGrabbable : MonoBehaviour
         rb.angularVelocity = angularVelocity;
         m_grabbedBy = null;
         m_grabbedCollider = null;
+
+        if (snapBackToPlace)
+        {
+            this.transform.position = initialPosition.position;
+            this.transform.rotation = initialPosition.rotation;
+        }
     }
 
     void Awake()
@@ -151,6 +178,12 @@ public class OVRGrabbable : MonoBehaviour
     protected virtual void Start()
     {
         m_grabbedKinematic = GetComponent<Rigidbody>().isKinematic;
+
+        if (isTransitionObject)
+        {
+            sceneText.text = "";
+        }
+        
     }
 
     void OnDestroy()
@@ -159,6 +192,22 @@ public class OVRGrabbable : MonoBehaviour
         {
             // Notify the hand to release destroyed grabbables
             m_grabbedBy.ForceRelease(this);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Controller" && isTransitionObject)
+        {
+            sceneText.text = sceneMessage;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (isTransitionObject)
+        {
+            sceneText.text = "";
         }
     }
 }

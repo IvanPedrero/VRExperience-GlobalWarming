@@ -3176,6 +3176,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2812a2aff55201d4d8208437f96fdec8, type: 3}
+--- !u!1 &103190140 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 2812a2aff55201d4d8208437f96fdec8,
+    type: 3}
+  m_PrefabInstance: {fileID: 103190139}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &103190141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103190140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 1, b: 0.91796017, a: 1}
+  m_EffectDistance: {x: 3, y: 3}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &106596433
 PrefabInstance:
   m_ObjectHideFlags: 0

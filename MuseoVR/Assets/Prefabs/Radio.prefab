@@ -236,8 +236,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7843731437361467727}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.0335, z: 0.0285}
-  m_LocalScale: {x: 0.011072002, y: 0.012026, z: 0.0041980008}
+  m_LocalPosition: {x: 0, y: -0.0028, z: 0.0273}
+  m_LocalScale: {x: 0.008094409, y: 0.008791847, z: 0.0030690324}
   m_Children: []
   m_Father: {fileID: 2999464292083172383}
   m_RootOrder: 1
@@ -410,6 +410,7 @@ MonoBehaviour:
   radioOutline: {fileID: 7843731437530361610}
   newsText: {fileID: 7843731437361467727}
   newsClip: {fileID: 8300000, guid: 4e96b914ca244a946b0b413dbf25b4bb, type: 3}
+  arrow: {fileID: 2304546931889619011}
 --- !u!82 &7843731438475191784
 AudioSource:
   m_ObjectHideFlags: 0
@@ -422,7 +423,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -430,8 +431,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 0.3
-  MaxDistance: 2
+  MinDistance: 1
+  MaxDistance: 5
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -593,13 +594,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1739e5c5d5434aa47a8d1b4ed5d2b4fc, type: 2}
-    - target: {fileID: -1504981713932161579, guid: 7857a45055d73434f9d0a26910512a13,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7857a45055d73434f9d0a26910512a13, type: 3}
+--- !u!1 &2304546931889619011 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 7857a45055d73434f9d0a26910512a13,
+    type: 3}
+  m_PrefabInstance: {fileID: 7843731436823648586}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2999464291392402000 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 7857a45055d73434f9d0a26910512a13,

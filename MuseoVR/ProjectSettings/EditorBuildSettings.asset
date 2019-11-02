@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Park.unity
     guid: 5f5fdafef28ad3f40bc5317338336584
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: 69c4a42f22474054096104b30edf09d8
   m_configObjects: {}

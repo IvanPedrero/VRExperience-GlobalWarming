@@ -16,19 +16,37 @@ public class RadioBehaviour : MonoBehaviour
     private AudioSource audioSource;
     private bool isPlayingAudio;
 
+    public GameObject arrow;
+
+    private Collider radioCollider;
+
+    private GameController gameController;
+
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        radioCollider = GetComponent<Collider>();
+        gameController = FindObjectOfType<GameController>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Hover outline.
         this.radioOutline.enabled = this.isHovering;
 
+        if (gameController)
+        {
+            //Disable interactions if description is playing.
+            this.arrow.SetActive(!gameController.isPlayingAudio);
+            this.radioCollider.enabled = !gameController.isPlayingAudio;
+        }
+
+        //Enable the text if hovering.
         newsText.SetActive(this.isHovering);
 
+        //Get input from oculus controllers.
         if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger) || 
             OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger) ||
             OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) ||
@@ -49,6 +67,12 @@ public class RadioBehaviour : MonoBehaviour
             audioSource.Play();
             StartCoroutine(LockAudio());
         }
+        else
+        {
+            audioSource.Stop();
+            this.isPlayingAudio = false;
+            StopCoroutine(LockAudio());
+        }
     }
 
     IEnumerator LockAudio()
@@ -62,7 +86,7 @@ public class RadioBehaviour : MonoBehaviour
         StopCoroutine(LockAudio());
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if(other.tag == "Controller")
             this.isHovering = true;

@@ -15,7 +15,7 @@ MonoBehaviour:
   bloomExpanded: 1
   bloomEnabled: 1
   bloomThreshold: 0.114
-  bloomIntensity: 1.38
+  bloomIntensity: 0.91
   bloomTint: {r: 1, g: 1, b: 1, a: 1}
   preserveAspectRatio: 1
   bloomTextureWidth: 128
